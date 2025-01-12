@@ -4,7 +4,7 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
         AWS_REGION = 'eu-north-1'
-        TF_BUCKET_NAME = 'my-first-bucket-using-terraform-Jenkins' // Match the bucket name in your Terraform code
+        TF_BUCKET_NAME = 'my-first-bucket-using-terraform-Jenkins-CICD' // Match the bucket name in your Terraform code
     }
     stages {
         stage('Checkout Code') {
