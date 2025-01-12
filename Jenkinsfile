@@ -12,7 +12,11 @@ pipeline {
         }
         stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                sh '''
+                terraform init \
+                -backend-config="bucket=${TF_BUCKET_NAME}" \
+                -backend-config="region=${AWS_REGION}"
+                '''
             }
         }
         stage('Terraform Plan') {
@@ -22,13 +26,20 @@ pipeline {
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve tfplan'
+                sh 'terraform apply -input=false -auto-approve tfplan'
             }
         }
     }
     post {
         always {
             archiveArtifacts artifacts: '**/*', allowEmptyArchive: true
+            cleanWs() // Clean up workspace after execution
+        }
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Please check the logs.'
         }
     }
 }
