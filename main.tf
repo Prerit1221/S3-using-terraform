@@ -18,5 +18,8 @@ resource "aws_s3_bucket" "firstbucket" {
     Name        = "My S3"
     Environment = "Dev"
   }
+lifecycle {
+    prevent_destroy = true
+  }
   
 }
