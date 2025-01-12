@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         AWS_REGION = 'eu-north-1'
-        TF_BUCKET_NAME = 'my-first-bucket-using-terraform-Jenkins' // Match the bucket name in your Terraform code
+        TF_BUCKET_NAME = 'my-first-bucket-using-terraform-Jenkins'
     }
     stages {
         stage('Checkout Code') {
@@ -12,11 +12,13 @@ pipeline {
         }
         stage('Terraform Init') {
             steps {
-                sh '''
-                terraform init \
-                -backend-config="bucket=${TF_BUCKET_NAME}" \
-                -backend-config="region=${AWS_REGION}"
-                '''
+                withCredentials([aws(credentialsId: 'AWS_CRED', region: 'eu-north-1')]) {
+                    sh '''
+                    terraform init \
+                    -backend-config="bucket=${TF_BUCKET_NAME}" \
+                    -backend-config="region=${AWS_REGION}"
+                    '''
+                }
             }
         }
         stage('Terraform Plan') {
@@ -33,7 +35,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: '**/*', allowEmptyArchive: true
-            cleanWs() // Clean up workspace after execution
+            cleanWs()
         }
         success {
             echo 'Pipeline executed successfully!'
