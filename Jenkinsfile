@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -out=tfplan'
+                sh 'terraform plan -input=false -out=tfplan'
             }
         }
         stage('Terraform Apply') {
