@@ -40,6 +40,6 @@ resource "aws_instance" "my_instance1" {
 
   tags = {
     Name = "ec222"
-    Environment = "test"
+    Environment = "testmeagain"
   }
 }
