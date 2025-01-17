@@ -33,3 +33,13 @@ resource "aws_instance" "my_instance" {
     Environment = "test"
   }
 }
+
+resource "aws_instance" "my_instance1" {
+  ami                    = "ami-075449515af5df0d1" # Amazon Linux 2 AMI for eu-north-1
+  instance_type          = "t3.micro"
+
+  tags = {
+    Name = "ec222"
+    Environment = "test"
+  }
+}
