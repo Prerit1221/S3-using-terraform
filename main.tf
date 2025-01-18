@@ -29,7 +29,7 @@ resource "aws_instance" "my_instance" {
   instance_type          = "t3.micro"
 
   tags = {
-    Name = "ec2"
+    Name = "ec2_temp"
     Environment = "test"
   }
 }
@@ -39,7 +39,7 @@ resource "aws_instance" "my_instance1" {
   instance_type          = "t3.micro"
 
   tags = {
-    Name = "test12345"
+    Name = "ec2_main"
     Environment = "hello21"
   }
 }
