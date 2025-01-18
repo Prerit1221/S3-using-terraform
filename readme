@@ -1,2 +1,2 @@
 Hello!
-This is the S3 terraforms cript
+This is the terraform code to create S3 bucket and EC2 instance and deploy it using the Jenkins Pipeline using CI-CD.
