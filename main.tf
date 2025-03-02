@@ -8,11 +8,11 @@ terraform {
 }
 
 provider "aws" {
-    region = "us-east-1"
+    region = "eu-north-1"
 }
 
 resource "aws_s3_bucket" "firstbucket" {
-    bucket = "my-first-bucket-using-terraform"
+    bucket = "my-first-bucket-using-terraformmmmmmmm"
 
   tags = {
     Name        = "My S3"
@@ -24,7 +24,7 @@ lifecycle {
   
 }
 
-resource "aws_instance" "my_instance" {
+resource "aws_instance" "my_instanceeeee" {
   ami                    = "ami-075449515af5df0d1" # Amazon Linux 2 AMI for eu-north-1
   instance_type          = "t3.micro"
 
@@ -34,7 +34,7 @@ resource "aws_instance" "my_instance" {
   }
 }
 
-resource "aws_instance" "my_instance1" {
+resource "aws_instance" "my_instance11111" {
   ami                    = "ami-075449515af5df0d1" # Amazon Linux 2 AMI for eu-north-1
   instance_type          = "t3.micro"
 
