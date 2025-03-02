@@ -11,7 +11,7 @@ provider "aws" {
     region = "eu-north-1"
 }
 
-resource "aws_s3_bucket" "firstbucket" {
+resource "aws_s3_bucket" "firstbuckettttfffggg" {
     bucket = "my-first-bucket-using-terraformmmmmmmm"
 
   tags = {
